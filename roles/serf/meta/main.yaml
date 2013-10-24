@@ -1,0 +1,5 @@
+dependencies:
+  - role: supervise
+    name: serf
+    command: serf agent -bind={{ serf_bind_address }} -rpc-addr={{ serf_rpc_address }}
+    autostart: off

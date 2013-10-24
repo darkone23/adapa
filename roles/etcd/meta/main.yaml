@@ -1,0 +1,5 @@
+dependencies:
+  - role: supervise
+    name: etcd
+    command: etcd -s {{ etcd_server_address }} -c {{ etcd_client_address }}
+    autostart: off

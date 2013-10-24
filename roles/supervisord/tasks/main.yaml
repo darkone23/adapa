@@ -1,0 +1,34 @@
+- name: installing supervisor
+  pip: name=supervisor
+       version={{ supervisor_version }}
+       virtualenv={{ supervisor_virtualenv }}
+       {% if pip_args %} extra_args={{ pip_args }} {% endif %}
+
+- name: ensuring supervisor directories
+  file: path={{ supervisor_home }}/{{ item }}
+        state=directory
+  with_items:
+    - conf.d
+    - logs
+
+- name: installing supervisor configuration
+  template: src=supervisord.conf.j2
+            dest={{ supervisor_config }}
+
+- name: running supervisord
+  environment:
+    PATH: /home/{{ ansible_user_id }}/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin 
+  shell: creates={{ supervisor_home }}/supervisord.pid
+         {{ supervisord_path }} -c {{ supervisor_config }}
+
+- name: installing supervisor aliases
+  lineinfile: dest={{ alias_file }}
+              regexp="{{ item.regexp }}"
+              line="{{ item.line }}"
+              create=yes
+  with_items:
+    - regexp: ^alias supervisord
+      line: alias supervisord='{{ supervisord_path }} -c {{ supervisor_config }}'
+    - regexp: ^alias supervisorctl
+      line: alias supervisorctl='{{ supervisorctl_path }} -c {{ supervisor_config }}'
+

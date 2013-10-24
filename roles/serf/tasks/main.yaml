@@ -1,0 +1,12 @@
+- name: fetching serf
+  get_url: dest=~/tmp/serfdom-0.1.1.tar.gz
+           url=https://github.com/hashicorp/serf/archive/v0.1.1.tar.gz
+
+- name: extracting serf
+  shell: creates=~/bin/serf
+         tar -C ~/bin -xzf ~/tmp/serfdom-0.1.1.tar.gz
+
+- name: starting serf
+  supervisorctl: name=serf
+                 state=started
+                 {{ super_args }}

@@ -1,0 +1,12 @@
+- name: fetching etcd
+  get_url: dest=~/tmp/
+           url=https://github.com/coreos/etcd/releases/download/v0.1.2/etcd-v0.1.2-Linux-x86_64.tar.gz
+
+- name: extracting etcd
+  shell: creates=~/bin/etcdctl
+         tar -C ~/bin -xzf ~/tmp/etcd-v0.1.2-Linux-x86_64.tar.gz etcd-v0.1.2-Linux-x86_64/etcd etcd-v0.1.2-Linux-x86_64/etcdctl --strip-components=1
+
+- name: starting etcd
+  supervisorctl: name=etcd
+                 state=started
+                 {{ super_args }}
