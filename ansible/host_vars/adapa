@@ -1,0 +1,2 @@
+etcd_client_address: 10.0.3.36:4001
+etcd_server_address: 10.0.3.36:7001

@@ -26,7 +26,10 @@ If you have vagrant and virtualbox installed:
 git clone https://github.com/eggsby/adapa
 cd adapa
 vagrant up
-vagrant ssh
+vagrant ssh [oannes|adapa]
 ```
 
 Then poke around with the etcdctl and serf binaries
+
+You may need to edit ansible/host_vars to match your vms public ips
+Have fun!

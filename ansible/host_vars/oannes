@@ -1,2 +1,5 @@
+etcd_client_address: 10.0.3.110:4001
+etcd_server_address: 10.0.3.110:7001
+
 etcd_join_address: 10.0.3.36:7001
 serf_join_address: adapa
