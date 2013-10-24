@@ -9,14 +9,7 @@
       file: path=~/bin state=directory
 
   roles:
-    - supervisord # http://supervisord.org/
-    # supervisord lets you turn simple processes into init-style services
-    # this lets us turn ordinary commands into monitored and manageable daemons
+    - supervisord
+    - etcd
+    - serf
 
-    - serf # http://serfdom.io/
-    # serf is a decentralized system for service orchestration 
-    # nodes participate in message-based event processing
-
-    - etcd # https://github.com/coreos/etcd#etcd
-    # etcd is a distributed kv-store with a simple curl-able interface
-    # we can use this as a foundation for shared information across systems
