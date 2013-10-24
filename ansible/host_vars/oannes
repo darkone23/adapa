@@ -1,0 +1,2 @@
+etcd_join_address: 10.0.3.36:7001
+serf_join_address: adapa

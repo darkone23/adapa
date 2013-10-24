@@ -4,5 +4,8 @@
   gather_facts: no
 
   tasks:
-    - name: installing unzip utility
-      apt: pkg=unzip state=present
+    - name: installing required system packages
+      apt: pkg={{ item }} state=present
+      with_items:
+        - unzip
+        - python-virtualenv

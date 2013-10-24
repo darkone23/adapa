@@ -4,7 +4,7 @@
 # this playbook will install the core components, supervisor, etcd, and serf
 
 - name: setting up adapa services
-  hosts: one:two
+  hosts: all
 
   pre_tasks:
     - name: creating directories for basic setup

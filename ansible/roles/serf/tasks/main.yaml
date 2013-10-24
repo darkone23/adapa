@@ -10,3 +10,7 @@
   supervisorctl: name=serf
                  state=started
                  {{ super_args }}
+
+- name: starting serf
+  shell: ~/bin/serf join {{ serf_join_address }}
+  when: serf_join_address != False

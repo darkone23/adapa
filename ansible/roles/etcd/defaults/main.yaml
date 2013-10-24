@@ -1,2 +1,3 @@
-etcd_server_address: 0.0.0.0:7001
+etcd_server_address: 127.0.0.1:7001
 etcd_client_address: 127.0.0.1:4001
+etcd_join_address: off

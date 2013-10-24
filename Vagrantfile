@@ -6,30 +6,32 @@ VAGRANTFILE_API_VERSION = "2"
 
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
-  config.vm.define :one do |config|
-    config.vm.box = "precise-amd64"
-    config.vm.box_url = "http://files.vagrantup.com/precise64.box"
-    config.vm.hostname = "adapa-one"
+  config.vm.define :adapa do |node|
+    node.vm.box = "precise-amd64"
+    node.vm.box_url = "http://files.vagrantup.com/precise64.box"
 
-    config.vm.provision :ansible do |ansible|
+    node.vm.hostname = "adapa"
+
+    node.vm.provision :ansible do |ansible|
       ansible.playbook = "ansible/deps.yaml"
     end
 
-    config.vm.provision :ansible do |ansible|
+    node.vm.provision :ansible do |ansible|
       ansible.playbook = "ansible/adapa.yaml"
     end
   end
 
-  config.vm.define :two do |config|
-    config.vm.box = "precise-amd64"
-    config.vm.box_url = "http://files.vagrantup.com/precise64.box"
-    config.vm.hostname = "adapa-two"
+  config.vm.define :oannes do |node|
+    node.vm.box = "precise-amd64"
+    node.vm.box_url = "http://files.vagrantup.com/precise64.box"
 
-    config.vm.provision :ansible do |ansible|
+    node.vm.hostname = "oannes"
+
+    node.vm.provision :ansible do |ansible|
       ansible.playbook = "ansible/deps.yaml"
     end
 
-    config.vm.provision :ansible do |ansible|
+    node.vm.provision :ansible do |ansible|
       ansible.playbook = "ansible/adapa.yaml"
     end
   end

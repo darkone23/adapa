@@ -1,5 +1,5 @@
 dependencies:
   - role: supervise
     name: etcd
-    command: etcd -s {{ etcd_server_address }} -c {{ etcd_client_address }}
+    command: etcd -n {{ ansible_hostname }} -c {{ etcd_client_address }} -s {{ etcd_server_address }} -cl 0.0.0.0 -sl 0.0.0.0 {% if etcd_join_address %}-C {{ etcd_join_address }}{% endif %}
     autostart: off
