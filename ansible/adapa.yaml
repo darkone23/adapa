@@ -1,3 +1,5 @@
+- include: deps.yaml
+
 # adapa is a collection of services for orchestration of distributed systems
 # this playbook will install the core components, supervisor, etcd, and serf
 
