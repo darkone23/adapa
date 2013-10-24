@@ -1,0 +1,8 @@
+- name: installing deps
+  hosts: all
+  sudo: yes
+  gather_facts: no
+
+  tasks:
+    - name: installing unzip utility
+      apt: pkg=unzip state=present

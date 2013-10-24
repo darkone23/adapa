@@ -2,11 +2,14 @@
 # this playbook will install the core components, supervisor, etcd, and serf
 
 - name: setting up adapa services
-  hosts: adapa
+  hosts: one:two
 
   pre_tasks:
     - name: creating directories for basic setup
-      file: path=~/bin state=directory
+      file: path={{ item }} state=directory
+      with_items:
+        - ~/bin
+        - ~/tmp
 
   roles:
     - supervisord

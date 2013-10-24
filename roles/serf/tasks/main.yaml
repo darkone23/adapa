@@ -1,10 +1,10 @@
 - name: fetching serf
-  get_url: dest=~/tmp/serfdom-0.1.1.tar.gz
-           url=https://github.com/hashicorp/serf/archive/v0.1.1.tar.gz
+  get_url: dest=~/tmp/serfdom-0.1.1.zip
+           url=https://dl.bintray.com/mitchellh/serf/0.1.1_linux_amd64.zip
 
 - name: extracting serf
   shell: creates=~/bin/serf
-         tar -C ~/bin -xzf ~/tmp/serfdom-0.1.1.tar.gz
+         unzip ~/tmp/serfdom-0.1.1.zip -d ~/bin 
 
 - name: starting serf
   supervisorctl: name=serf

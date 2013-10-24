@@ -6,9 +6,26 @@ VAGRANTFILE_API_VERSION = "2"
 
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
-  config.vm.define :adapa do |config|
-    config.vm.box = "precise64"
-    config.vm.box_url = "http://files.vagrantup.com/precise64.box"
+  config.vm.define :one do |config|
+    config.vm.box = "precise-amd64"
+    config.vm.hostname = "adapa-one"
+
+    config.vm.provision :ansible do |ansible|
+      ansible.playbook = "deps.yaml"
+    end
+
+    config.vm.provision :ansible do |ansible|
+      ansible.playbook = "adapa.yaml"
+    end
+  end
+
+  config.vm.define :two do |config|
+    config.vm.box = "precise-amd64"
+    config.vm.hostname = "adapa-two"
+
+    config.vm.provision :ansible do |ansible|
+      ansible.playbook = "deps.yaml"
+    end
 
     config.vm.provision :ansible do |ansible|
       ansible.playbook = "adapa.yaml"
