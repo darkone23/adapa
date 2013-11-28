@@ -4,3 +4,4 @@
 * make etcd/serfdom roles? (and available as git submodules?)
 * install a simple serf event script tying everything together
 * upgrade some versions
+* use docker/packer instead of vagrant
